@@ -1,3 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@400;700&display=swap');
+
 input, label {
   display: block;
+}
+
+label {
+  color: rgb(110, 110, 110);
+}
+
+input {
+  margin-top: 2.5px;
+  width: 100%;
+  margin-bottom: 15px;
+  border: none;
+  border-bottom: 1px solid black;
+  font-size: 18px;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+input:focus {
+  border: none;
+  border-bottom: 1px solid black;
+}
+
+
+h1 {
+  font-family:'Times New Roman', Times, serif
+}
+
+.dropdown-button {
+  padding: 0px 30px;
+  width: 100%;
+  background-color: white;
+  border: none;
+  border-radius: 20px;
+}
+
+.dropdown-button:active {
+  border: none; 
+}
+
+.dropdown-button > h1 {
+  text-transform: uppercase;
+  font-family: 'Saira Condensed', 'Times New Roman';
+  font-weight: bold;
+  font-size: 36px;
+  padding: 0px 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.form-container {
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 20px;
+}
+
+form {
+  padding: 10px 40px 20px 40px;
+}
+
+
+button[type="submit"]{
+  display: block;
+  background-color: #3CC2DF;
+  text-transform: uppercase;
+  margin-top: 20px;
+  padding: 10px 15px;
+  font-weight: bold;
+  border-radius: 20px;
+  margin-left: auto;
 }
