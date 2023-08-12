@@ -12,7 +12,7 @@ function ResumeContainer({children}){
 }
 
 ResumeContainer.propTypes = {
-  children: PropTypes.element
+  children: PropTypes.arrayOf(PropTypes.element)
 }
 
 export default ResumeContainer;
