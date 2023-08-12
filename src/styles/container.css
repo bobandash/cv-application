@@ -16,6 +16,14 @@
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
+.mobile-hidden {
+  visibility: hidden;
+}
+
+#forms-container {
+  width: fit-content;
+  margin: 0 auto;
+}
 
 @media screen and (min-width: 770px) {
   #resume {
@@ -31,30 +39,12 @@
     position: static;
     width: 42.5%;
   }
+
+  .mobile-hidden {
+    visibility: visible;
+  }
   
   #resume {
     width: 100%;
   }
 }
-
-/* #forms-container {
-  width: 100%;
-}
-
-#resume-container {
-  display: none;
-} */
-
-
-/* 
-@media screen and (min-width: 700px) {
-  #resume-container {
-    display: block;
-    max-width: 50%;
-  }
-
-  #forms-container {
-    max-width: 50%;
-  }
-
-} */
