@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-
+import '../styles/general-info-styling.css'
 
 function GeneralInfoText({name, email, phoneNumber, cityAndState}){
   if(!name){
