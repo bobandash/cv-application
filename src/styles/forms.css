@@ -61,7 +61,7 @@ h1 {
   box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 20px;
 }
 
-.add-job {
+.add-job, .finish-adding-job {
   background-color: #3CC2DF;
   font-size: 24px;
   padding: 10px 20px;
@@ -85,6 +85,27 @@ button[type="submit"]{
 
 .form-container-excluding-header {
   padding: 0px 40px 20px 40px;
+}
+
+.jobs-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.jobs-list button {
+  background-color: white;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 24px;
+  padding: 10px 0px;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  text-transform: uppercase;
+}
+
+.work-experience-form {
+  margin-top: 20px
 }
 
 @media screen and (min-width: 1200px) {
