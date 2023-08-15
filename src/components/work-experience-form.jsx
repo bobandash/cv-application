@@ -1,80 +1,55 @@
-import  '../styles/forms.css'
-import PropTypes from 'prop-types'
-import { v4 as uuid} from 'uuid';
+import  '../styles/forms.css';
+import PropTypes from 'prop-types';
+
 import JobList from './work-experience-form-components/job-list';
-import '../styles/work-experience-form.css'
+import '../styles/work-experience-form.css';
+import { useState } from 'react';
 
-
-
-function AddJobForm(){
+function AddJobForm({toggleAddJobStatus, handleInput, currentWorkExperience, handleFinish}){
   return (
-  <>  
-    <form>
-      <label htmlFor = "company-name" required>Company Name:</label>
-      <input type = "text" name = "company-name" id = "company-name"/>
-      <label htmlFor = "job-title" required>Job Title:</label>
-      <input type = "text" name = "job-title" id = "job-title"/>
-      <label htmlFor =  "duration" required>Worked From (Date Range):</label>
-      <input type = "text" name = "duration" id = "duration"/>
-      <label htmlFor =  "city-and-state" required>City And State:</label>
-      <input type = "text" name = "city-and-state" id = "city-and-state"/>
-    </form>
-    <div className = "button-container">
-      <button className = "add-bullet-point">Add Bullet Points</button>
-      <button className = "add-bullet-point">Finish Job</button>
-    </div>
+    <>  
+      <form>
+        <label htmlFor = "companyName" required>Company Name:</label>
+        <input type = "text" name = "companyName" id = "companyName" onChange = {handleInput} value = {currentWorkExperience.companyName}/>
+        <label htmlFor = "jobTitle" required>Job Title:</label>
+        <input type = "text" name = "jobTitle" id = "jobTitle" onChange = {handleInput} value = {currentWorkExperience.jobTitle}/>
+        <label htmlFor =  "duration" required>Worked From (Date Range):</label>
+        <input type = "text" name = "duration" id = "duration" onChange = {handleInput} value = {currentWorkExperience.duration}/>
+        <label htmlFor =  "cityAndState" required>City And State:</label>
+        <input type = "text" name = "cityAndState" id = "cityAndState" onChange = {handleInput} value = {currentWorkExperience.cityAndState}/>
+        <label htmlFor =  "bulletPoints" required>Description of Job Responsibilities:</label>
+        <input type = "text" name = "bulletPoints" id = "bulletPoints" onChange = {handleInput} value = {currentWorkExperience.bulletPoints}/>
+      </form>
+      <div className = "button-container">
+        <button className = "finish-adding-job" onClick={() => {
+            toggleAddJobStatus();
+            handleFinish();
+          }}>
+          Finish Adding Job</button>
+      </div>
     </>
   )
 }
 
 
-function WorkExperienceForm(){
-  const hasOneJob = true;
-  const experienceJobNames = [
-    {
-      companyName: 'Amazon',
-      jobTitle: 'Chief Executive Officer',
-      duration: 'August 14, 2023 - August 14, 2023',
-      cityAndState: 'Seattle, Washington',
-      bulletPoints: [
-        'Led 1M people to handle logistics and innovate faster shipping methods to increase customer experience',
-        'Got fired because I actually went to the HQ, and security would not let me thorugh'
-      ],
-      id: uuid(),
-    },
-    {
-      companyName: 'Apple',
-      jobTitle: 'Chief Executive Officer',
-      duration: 'August 14, 2023 - August 14, 2023',
-      cityAndState: 'Seattle, Washington',
-      bulletPoints: [
-        'Led 1M people to handle logistics and innovate faster shipping methods to increase customer experience',
-        'Got fired because I actually went to the HQ, and security would not let me thorugh'
-      ],
-      id: uuid(),
-    }
-  ]
-  const isCurrentlyAddingJob = false;
-
+function WorkExperienceForm({workExperience, handleInput, currentWorkExperience, handleSetWorkExperience}){
+  const [isAddJobFormOpen, setIsAddJobFormOpen] = useState(false);
+  const hasAtLeastOneJob = (workExperience.length > 0 ? true : false);
+  function toggleAddJobStatus(){
+    setIsAddJobFormOpen(!isAddJobFormOpen);
+  }
   return (
     <>
     <div className = "form-container">
       <button className = "dropdown-button"><h1>Work Experience</h1></button>
       <div className = "form-container-excluding-header">
-        {(hasOneJob) && <JobList jobs = {experienceJobNames} />}
-        {!hasOneJob && <AddJobForm />}
-        {!(isCurrentlyAddingJob) && <button className = "add-job">Add Job</button>}
+        {(hasAtLeastOneJob) && <JobList jobs = {workExperience} />}
+        {!(isAddJobFormOpen) && <button className = "add-job" onClick = {toggleAddJobStatus}>Add Job</button>}
+        {(isAddJobFormOpen) && <AddJobForm handleFinish = {handleSetWorkExperience} toggleAddJobStatus = {toggleAddJobStatus} handleInput = {handleInput} currentWorkExperience = {currentWorkExperience}/>}
       </div>
     </div>
     </>
   )
 }
-
-
-
-
-/* WorkExperienceForm.propTypes = {
-
-} */
 
 export default WorkExperienceForm;
