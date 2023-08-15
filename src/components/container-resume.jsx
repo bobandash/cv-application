@@ -11,8 +11,20 @@ function ResumeContainer({children}){
   )
 }
 
+function ResumeContentContainer({children}){
+  return (
+    <div id = "resume-content-container">
+      {children}
+    </div>    
+  )
+}
+
 ResumeContainer.propTypes = {
   children: PropTypes.arrayOf(PropTypes.element)
 }
 
-export default ResumeContainer;
+ResumeContentContainer.propTypes = {
+  children: PropTypes.arrayOf(PropTypes.element)
+}
+
+export {ResumeContainer, ResumeContentContainer};
