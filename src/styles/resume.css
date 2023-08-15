@@ -7,6 +7,10 @@
   margin-bottom: 8px;
 }
 
+.company-container {
+  margin-bottom: 10px;
+}
+
 .company-and-duration-container *, .role-and-location-container * {
   margin-top: 0px;
   margin-bottom: 0px;
