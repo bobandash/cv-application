@@ -1,0 +1,38 @@
+.section-header {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 16px;
+  border-bottom: 1px solid black;
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+
+.company-and-duration-container *, .role-and-location-container * {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-size: 16px;
+}
+
+.company-and-duration-container, .role-and-location-container {
+  display: flex;
+}
+
+.company-and-duration-container > *:first-child, .role-and-location-container > *:first-child {
+  margin-right: auto;
+}
+
+.company-and-duration-container * {
+  font-weight: bold;
+}
+
+.role-and-location-container * {
+  font-style: italic;
+  font-weight: 400;
+}
+
+.bullet-point {
+  font-size: 16px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-weight: normal;
+}

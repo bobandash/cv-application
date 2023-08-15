@@ -9,6 +9,11 @@
   justify-content: center;
 }
 
+#resume-content-container {
+  width: 85%;
+  margin: 0 auto;
+}
+
 #resume {
   margin: 0 auto;
   width: 80%;

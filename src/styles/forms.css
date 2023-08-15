@@ -32,11 +32,14 @@ h1 {
 }
 
 .dropdown-button {
-  padding: 0px 30px;
   width: 100%;
   background-color: white;
   border: none;
-  border-radius: 20px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom: 3px solid black;
+  margin-bottom: 10px;
+  background-color: lightslategray;
 }
 
 .dropdown-button:active {
@@ -47,8 +50,7 @@ h1 {
   text-transform: uppercase;
   font-family: 'Saira Condensed', 'Times New Roman';
   font-weight: bold;
-  font-size: 36px;
-  padding: 0px 20px;
+  font-size: 30px;
   margin-top: 10px;
   margin-bottom: 10px;
 }
@@ -59,10 +61,16 @@ h1 {
   box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 20px;
 }
 
-form {
-  padding: 10px 40px 20px 40px;
+.add-job {
+  background-color: #3CC2DF;
+  font-size: 24px;
+  padding: 10px 20px;
+  display: block;
+  margin-top: 24px;
+  border-radius: 20px;
+  margin-left: auto;
+  font-weight: bold;
 }
-
 
 button[type="submit"]{
   display: block;
@@ -73,4 +81,14 @@ button[type="submit"]{
   font-weight: bold;
   border-radius: 20px;
   margin-left: auto;
+}
+
+.form-container-excluding-header {
+  padding: 0px 40px 20px 40px;
+}
+
+@media screen and (min-width: 1200px) {
+  .dropdown-button > h1 {
+    font-size: 36px;
+  }
 }
