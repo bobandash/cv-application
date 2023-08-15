@@ -6,16 +6,18 @@ function GeneralInfoForm({handleInput, props}){
     <>
     <div className = "form-container">
       <button className = "dropdown-button"><h1>General Information</h1></button>
-      <form>
-        <label htmlFor = "name" required>Full Name (Required):</label>
-        <input type = "text" name = "name" id = "name" onChange = {handleInput} value = {props.name}/>
-        <label htmlFor = "email">Email (Recommended):</label>
-        <input type = "email" name = "email" id = "email" onChange = {handleInput} value = {props.email}/>
-        <label htmlFor = "phoneNumber">Phone Number (Recommended):</label>
-        <input type = "text" name = "phoneNumber" id = "phoneNumber" onChange = {handleInput} value = {props.phoneNumber}/>
-        <label htmlFor = "cityAndState">City and State (Recommended):</label>
-        <input type = "text" name = "cityAndState" id = "cityAndState" onChange = {handleInput} value = {props.cityAndState}/>
-      </form>
+      <div className = "form-container-excluding-header">
+        <form>
+          <label htmlFor = "name" required>Full Name (Required):</label>
+          <input type = "text" name = "name" id = "name" onChange = {handleInput} value = {props.name}/>
+          <label htmlFor = "email">Email (Recommended):</label>
+          <input type = "email" name = "email" id = "email" onChange = {handleInput} value = {props.email}/>
+          <label htmlFor = "phoneNumber">Phone Number (Recommended):</label>
+          <input type = "text" name = "phoneNumber" id = "phoneNumber" onChange = {handleInput} value = {props.phoneNumber}/>
+          <label htmlFor = "cityAndState">City and State (Recommended):</label>
+          <input type = "text" name = "cityAndState" id = "cityAndState" onChange = {handleInput} value = {props.cityAndState}/>
+        </form>
+      </div>
     </div>
     </>
   )
