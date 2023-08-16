@@ -46,13 +46,20 @@ h1 {
   border: none; 
 }
 
-.dropdown-button > h1 {
+.dropdown-button {
   text-transform: uppercase;
   font-family: 'Saira Condensed', 'Times New Roman';
   font-weight: bold;
   font-size: 30px;
-  margin-top: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   margin-bottom: 10px;
+}
+
+.form-container > *:last-child{
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  margin-bottom: 0px;
 }
 
 .form-container {
@@ -109,7 +116,7 @@ button[type="submit"]{
 }
 
 @media screen and (min-width: 1200px) {
-  .dropdown-button > h1 {
+  .dropdown-button {
     font-size: 36px;
   }
 }
