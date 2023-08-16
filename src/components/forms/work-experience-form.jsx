@@ -85,4 +85,31 @@ function WorkExperienceForm({workExperience, handleInput, currentWorkExperience,
   )
 }
 
+AddJobForm.propTypes = {
+  toggleJobFormStatus: PropTypes.func,
+  handleInput: PropTypes.func,
+  currentWorkExperience: PropTypes.object,
+  handleFinish: PropTypes.func
+}
+
+EditJobForm.propTypes = {
+  toggleJobFormStatus: PropTypes.func,
+  handleInput: PropTypes.func,
+  allWorkExperience: PropTypes.arrayOf(PropTypes.object),
+  handleFinish: PropTypes.func
+}
+
+WorkExperienceForm.propTypes = {
+  workExperience: PropTypes.arrayOf(PropTypes.object),
+  handleInput: PropTypes.func,
+  currentWorkExperience: PropTypes.object,
+  handleSetWorkExperience: PropTypes.func, 
+  handleFormActive: PropTypes.func, 
+  formActiveNumber: PropTypes.number,
+  handleJobDelete: PropTypes.func,
+  handleJobEdit: PropTypes.func,
+  handleFinishJobEdit: PropTypes.func,
+  handleJobEditInput: PropTypes.func,
+}
+
 export default WorkExperienceForm;

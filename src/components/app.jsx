@@ -14,7 +14,6 @@ import EducationForm from './forms/education-form'
 import EducationText from './resume-text/education-text'
 import SkillsAndInterestsForm from './forms/skills-interests-form'
 import SkillsInterestsText from './resume-text/skills-interests-text'
-import FormNumber from './active-form-number'
 
 
 function App(){
@@ -65,12 +64,50 @@ function App(){
     }
   }
 
+  function handleJobDelete(key){
+    setWorkExperience(workExperience.filter(job => job.id !== key));
+  }
+
+  function handleJobEdit(key){
+    setWorkExperience(workExperience.map(job => {
+      if(job.id === key){
+        return {...job, isEditing: true}
+      } else {
+        return job;
+      }
+    }))
+  }
+
+  function handleFinishJobEdit(){
+    setWorkExperience(workExperience.map(job => {
+      if(job.isEditing){
+        return {...job, isEditing: false};
+      }
+      return job;
+    }))
+  }
+
+  function handleJobEditInput(e){
+    const value = e.target.value;
+    const prop = e.target.name;
+    setWorkExperience(workExperience.map(job => {
+      if(job.isEditing){
+        return {...job, [prop]: value};
+      } else {
+        return job;
+      }
+    }))
+  }
+
   const hasWorkExperience = ((Object.keys(currentWorkExperience).length > 0 || workExperience.length > 0) ? true : false)
   return (
     <>
     <FormContainer>
       <GeneralInfoForm handleInput = {handleGeneralInfoInput} props = {generalInfo} handleFormActive = {handleFormActive} formActiveNumber = {formActiveNumber}/>
-      <WorkExperienceForm workExperience = {workExperience} handleSetWorkExperience = {handleSetWorkExperience} handleInput = {handleWorkExperienceInput} currentWorkExperience = {currentWorkExperience} handleFormActive = {handleFormActive} formActiveNumber = {formActiveNumber}/>
+      <WorkExperienceForm workExperience = {workExperience} handleSetWorkExperience = {handleSetWorkExperience} handleInput = {handleWorkExperienceInput} 
+        currentWorkExperience = {currentWorkExperience} handleFormActive = {handleFormActive} formActiveNumber = {formActiveNumber} 
+        handleJobDelete = {handleJobDelete} handleJobEdit = {handleJobEdit} handleFinishJobEdit = {handleFinishJobEdit} handleJobEditInput = {handleJobEditInput}/>
+      
       <EducationForm props = {education} handleInput = {handleSetEducation} handleFormActive = {handleFormActive} formActiveNumber = {formActiveNumber}/>
       <SkillsAndInterestsForm props = {skillsInterests} handleInput = {handleSkillsAndInterests} handleFormActive = {handleFormActive} formActiveNumber = {formActiveNumber}/>
     </FormContainer>
