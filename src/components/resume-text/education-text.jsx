@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import SectionHeader from '../section-header';
+import SectionHeader from './section-header';
 
 function EducationText({universityName, degree, honorsAwards, studentOrganizations, graduationDate, location, gpa}){
   if(!(universityName)){
