@@ -7,17 +7,20 @@ import '@fortawesome/fontawesome-free'
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { useState } from 'react';
 import { v4 as uuid} from 'uuid';
-import { workExperienceData, generalInfoData, educationData } from './sample-data'
-import SectionHeader from './section-header'
+import { workExperienceData, generalInfoData, educationData, skillsInterestsData } from './sample-data'
+import SectionHeader from './resume-text/section-header'
 import WorkExperienceText from './resume-text/work-experience-text'
 import EducationForm from './forms/education-form'
 import EducationText from './resume-text/education-text'
+import SkillsAndInterestsForm from './forms/skills-interests-form'
+import SkillsInterestsText from './resume-text/skills-interests-text'
 
 function App(){
   const [generalInfo, setGeneralInfo] = useState(generalInfoData);
   const [currentWorkExperience, setCurrentWorkExperience] = useState({})
   const [workExperience, setWorkExperience] = useState(workExperienceData)
   const [education, setEducation] = useState(educationData);
+  const [skillsInterests, setSkillsInterests] = useState(skillsInterestsData);
 
   function handleGeneralInfoInput(e){
     const value = e.target.value;
@@ -44,6 +47,12 @@ function App(){
     setEducation({...education, [prop]: value})    
   }
 
+  function handleSkillsAndInterests(e){
+    const value = e.target.value;
+    const prop = e.target.name;
+    setSkillsInterests({...skillsInterests, [prop]: value}) 
+  }
+
   const hasWorkExperience = ((Object.keys(currentWorkExperience).length > 0 || workExperience.length > 0) ? true : false)
   return (
     <>
@@ -51,6 +60,7 @@ function App(){
       <GeneralInfoForm handleInput = {handleGeneralInfoInput} props = {generalInfo}/>
       <WorkExperienceForm workExperience = {workExperience} handleSetWorkExperience = {handleSetWorkExperience} handleInput = {handleWorkExperienceInput} currentWorkExperience = {currentWorkExperience}/>
       <EducationForm props = {education} handleInput = {handleSetEducation} />
+      <SkillsAndInterestsForm props = {skillsInterests} handleInput = {handleSkillsAndInterests} />
     </FormContainer>
     <ResumeContainer>
       <GeneralInfoText {...generalInfo} />
@@ -61,6 +71,7 @@ function App(){
           ))}
           <WorkExperienceText {... currentWorkExperience} />
           <EducationText {... education} />
+          <SkillsInterestsText {... skillsInterests} />
       </ResumeContentContainer>
     </ResumeContainer>
     </>
