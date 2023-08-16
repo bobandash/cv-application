@@ -42,6 +42,8 @@ EducationForm.propTypes = {
   location: PropTypes.string,
   studentOrganizations: PropTypes.string,
   gpa: PropTypes.string
+  handleFormActive: PropTypes.func,
+  formActiveNumber: PropTypes.number,
 }
 
 export default EducationForm;

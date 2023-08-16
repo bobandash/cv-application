@@ -33,6 +33,8 @@ GeneralInfoForm.propTypes = {
   email: PropTypes.string,
   phoneNumber: PropTypes.string,
   cityAndState: PropTypes.string,
+  handleFormActive: PropTypes.func,
+  formActiveNumber: PropTypes.number,
 }
 
 export default GeneralInfoForm;
