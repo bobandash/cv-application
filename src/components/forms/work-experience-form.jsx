@@ -4,7 +4,8 @@ import FormNumber from '../active-form-number';
 import JobList from './job-list';
 import { useState } from 'react';
 
-function AddJobForm({toggleAddJobStatus, handleInput, currentWorkExperience, handleFinish}){
+
+function AddJobForm({toggleJobFormStatus, handleInput, currentWorkExperience, handleFinish}){
   return (
     <>  
       <form className = "work-experience-form">
@@ -21,7 +22,7 @@ function AddJobForm({toggleAddJobStatus, handleInput, currentWorkExperience, han
       </form>
       <div className = "button-container">
         <button className = "finish-adding-job" onClick={() => {
-            toggleAddJobStatus();
+            toggleJobFormStatus();
             handleFinish();
           }}>
           Finish Adding Job</button>
@@ -30,12 +31,42 @@ function AddJobForm({toggleAddJobStatus, handleInput, currentWorkExperience, han
   )
 }
 
+function EditJobForm({toggleJobFormStatus, handleInput, allWorkExperience, handleFinish}){
+  const jobEdited = allWorkExperience.filter(job => job.isEditing === true)[0];
 
-function WorkExperienceForm({workExperience, handleInput, currentWorkExperience, handleSetWorkExperience, handleFormActive, formActiveNumber}){
-  const [isAddJobFormOpen, setIsAddJobFormOpen] = useState(false);
+  return (
+    <>  
+      <form className = "work-experience-form">
+        <label htmlFor = "companyName" required>Company Name:</label>
+        <input type = "text" name = "companyName" id = "companyName" onChange = {handleInput} value = {jobEdited.companyName}/>
+        <label htmlFor = "jobTitle" required>Job Title:</label>
+        <input type = "text" name = "jobTitle" id = "jobTitle" onChange = {handleInput} value = {jobEdited.jobTitle}/>
+        <label htmlFor =  "duration" required>Worked From (Date Range):</label>
+        <input type = "text" name = "duration" id = "duration" onChange = {handleInput} value = {jobEdited.duration}/>
+        <label htmlFor =  "cityAndState" required>City And State:</label>
+        <input type = "text" name = "cityAndState" id = "cityAndState" onChange = {handleInput} value = {jobEdited.cityAndState}/>
+        <label htmlFor =  "bulletPoints" required>Description of Job Responsibilities:</label>
+        <input type = "text" name = "bulletPoints" id = "bulletPoints" onChange = {handleInput} value = {jobEdited.bulletPoints}/>
+      </form>
+      <div className = "button-container">
+        <button className = "finish-editing-job" onClick={() => {
+            toggleJobFormStatus();
+            handleFinish();
+          }}>
+          Finish Editing Job</button>
+      </div>
+    </>
+  )
+}
+
+
+function WorkExperienceForm({workExperience, handleInput, currentWorkExperience, handleSetWorkExperience, handleFormActive, formActiveNumber, handleJobDelete, handleJobEdit, handleFinishJobEdit, handleJobEditInput}){
+  const [isJobFormOpen, setIsJobFormOpen] = useState(false);
   const hasAtLeastOneJob = (workExperience.length > 0 ? true : false);
-  function toggleAddJobStatus(){
-    setIsAddJobFormOpen(!isAddJobFormOpen);
+  const isEditingJob = workExperience.filter(job => job.isEditing === true).length > 0 ? true : false;
+
+  function toggleJobFormStatus(){
+    setIsJobFormOpen(!isJobFormOpen);
   }
   return (
     <>
@@ -43,9 +74,10 @@ function WorkExperienceForm({workExperience, handleInput, currentWorkExperience,
       <button className = "dropdown-button" data-index = {FormNumber.WorkExperience} onClick = {handleFormActive}>Work Experience</button>
       {(formActiveNumber === FormNumber.WorkExperience) && 
         <div className = "form-container-excluding-header">
-          {(hasAtLeastOneJob) && <JobList jobs = {workExperience} />}
-          {!(isAddJobFormOpen) && <button className = "add-job" onClick = {toggleAddJobStatus}>Add Job</button>}
-          {(isAddJobFormOpen) && <AddJobForm handleFinish = {handleSetWorkExperience} toggleAddJobStatus = {toggleAddJobStatus} handleInput = {handleInput} currentWorkExperience = {currentWorkExperience}/>}
+          {(hasAtLeastOneJob && !isJobFormOpen) && <JobList jobs = {workExperience} handleJobDelete = {handleJobDelete} handleJobEdit = {handleJobEdit} toggleJobFormStatus = {toggleJobFormStatus}/>}
+          {!(isJobFormOpen) && <button className = "add-job" onClick = {toggleJobFormStatus}>Add Job</button>}
+          {(isJobFormOpen && !isEditingJob) && <AddJobForm handleFinish = {handleSetWorkExperience} toggleJobFormStatus = {toggleJobFormStatus} handleInput = {handleInput} currentWorkExperience = {currentWorkExperience}/>}
+          {isEditingJob && <EditJobForm handleFinish = {handleFinishJobEdit} toggleJobFormStatus = {toggleJobFormStatus} handleInput = {handleJobEditInput} allWorkExperience = {workExperience} />}
         </div>
       }
       </div>
