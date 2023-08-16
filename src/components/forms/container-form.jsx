@@ -1,0 +1,16 @@
+import '../../styles/container.css'
+import PropTypes from 'prop-types'
+
+function FormContainer({children}){
+  return (
+    <div id = "forms-container">
+      {children}
+    </div>
+  )
+}
+
+FormContainer.propTypes = {
+  children: PropTypes.arrayOf(PropTypes.element)
+}
+
+export default FormContainer;
