@@ -7,9 +7,9 @@ function SkillsAndInterestsForm({props, handleInput}){
       <button className = "dropdown-button"><h1>Skills And Interests</h1></button>
       <div className = "form-container-excluding-header">
         <form>
-          <label htmlFor = "skills" required>University Name (Required):</label>
+          <label htmlFor = "skills" required>Skills:</label>
           <input type = "text" name = "skills" id = "skills" onChange = {handleInput} value = {props.skills}/>
-          <label htmlFor = "interests">Degree and Major:</label>
+          <label htmlFor = "interests">Interests:</label>
           <input type = "text" name = "interests" id = "interests" onChange = {handleInput} value = {props.interests}/>
         </form>
       </div>
