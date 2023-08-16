@@ -1,7 +1,7 @@
 import  '../../styles/forms.css';
 import PropTypes from 'prop-types';
-
-import JobList from '../work-experience-form-components/job-list';
+import FormNumber from '../active-form-number';
+import JobList from './job-list';
 import { useState } from 'react';
 
 function AddJobForm({toggleAddJobStatus, handleInput, currentWorkExperience, handleFinish}){
@@ -31,7 +31,7 @@ function AddJobForm({toggleAddJobStatus, handleInput, currentWorkExperience, han
 }
 
 
-function WorkExperienceForm({workExperience, handleInput, currentWorkExperience, handleSetWorkExperience}){
+function WorkExperienceForm({workExperience, handleInput, currentWorkExperience, handleSetWorkExperience, handleFormActive, formActiveNumber}){
   const [isAddJobFormOpen, setIsAddJobFormOpen] = useState(false);
   const hasAtLeastOneJob = (workExperience.length > 0 ? true : false);
   function toggleAddJobStatus(){
@@ -40,13 +40,15 @@ function WorkExperienceForm({workExperience, handleInput, currentWorkExperience,
   return (
     <>
     <div className = "form-container">
-      <button className = "dropdown-button"><h1>Work Experience</h1></button>
-      <div className = "form-container-excluding-header">
-        {(hasAtLeastOneJob) && <JobList jobs = {workExperience} />}
-        {!(isAddJobFormOpen) && <button className = "add-job" onClick = {toggleAddJobStatus}>Add Job</button>}
-        {(isAddJobFormOpen) && <AddJobForm handleFinish = {handleSetWorkExperience} toggleAddJobStatus = {toggleAddJobStatus} handleInput = {handleInput} currentWorkExperience = {currentWorkExperience}/>}
+      <button className = "dropdown-button" data-index = {FormNumber.WorkExperience} onClick = {handleFormActive}>Work Experience</button>
+      {(formActiveNumber === FormNumber.WorkExperience) && 
+        <div className = "form-container-excluding-header">
+          {(hasAtLeastOneJob) && <JobList jobs = {workExperience} />}
+          {!(isAddJobFormOpen) && <button className = "add-job" onClick = {toggleAddJobStatus}>Add Job</button>}
+          {(isAddJobFormOpen) && <AddJobForm handleFinish = {handleSetWorkExperience} toggleAddJobStatus = {toggleAddJobStatus} handleInput = {handleInput} currentWorkExperience = {currentWorkExperience}/>}
+        </div>
+      }
       </div>
-    </div>
     </>
   )
 }

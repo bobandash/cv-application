@@ -14,6 +14,8 @@ import EducationForm from './forms/education-form'
 import EducationText from './resume-text/education-text'
 import SkillsAndInterestsForm from './forms/skills-interests-form'
 import SkillsInterestsText from './resume-text/skills-interests-text'
+import FormNumber from './active-form-number'
+
 
 function App(){
   const [generalInfo, setGeneralInfo] = useState(generalInfoData);
@@ -21,6 +23,7 @@ function App(){
   const [workExperience, setWorkExperience] = useState(workExperienceData)
   const [education, setEducation] = useState(educationData);
   const [skillsInterests, setSkillsInterests] = useState(skillsInterestsData);
+  const [formActiveNumber, setFormActiveNumber] = useState(1);
 
   function handleGeneralInfoInput(e){
     const value = e.target.value;
@@ -53,14 +56,23 @@ function App(){
     setSkillsInterests({...skillsInterests, [prop]: value}) 
   }
 
+  function handleFormActive(e){
+    const FormNumber = Number(e.target.getAttribute("data-index"));
+    if(formActiveNumber === FormNumber){
+      setFormActiveNumber(FormNumber.None);
+    } else {
+      setFormActiveNumber(FormNumber);
+    }
+  }
+
   const hasWorkExperience = ((Object.keys(currentWorkExperience).length > 0 || workExperience.length > 0) ? true : false)
   return (
     <>
     <FormContainer>
-      <GeneralInfoForm handleInput = {handleGeneralInfoInput} props = {generalInfo}/>
-      <WorkExperienceForm workExperience = {workExperience} handleSetWorkExperience = {handleSetWorkExperience} handleInput = {handleWorkExperienceInput} currentWorkExperience = {currentWorkExperience}/>
-      <EducationForm props = {education} handleInput = {handleSetEducation} />
-      <SkillsAndInterestsForm props = {skillsInterests} handleInput = {handleSkillsAndInterests} />
+      <GeneralInfoForm handleInput = {handleGeneralInfoInput} props = {generalInfo} handleFormActive = {handleFormActive} formActiveNumber = {formActiveNumber}/>
+      <WorkExperienceForm workExperience = {workExperience} handleSetWorkExperience = {handleSetWorkExperience} handleInput = {handleWorkExperienceInput} currentWorkExperience = {currentWorkExperience} handleFormActive = {handleFormActive} formActiveNumber = {formActiveNumber}/>
+      <EducationForm props = {education} handleInput = {handleSetEducation} handleFormActive = {handleFormActive} formActiveNumber = {formActiveNumber}/>
+      <SkillsAndInterestsForm props = {skillsInterests} handleInput = {handleSkillsAndInterests} handleFormActive = {handleFormActive} formActiveNumber = {formActiveNumber}/>
     </FormContainer>
     <ResumeContainer>
       <GeneralInfoText {...generalInfo} />
