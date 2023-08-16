@@ -25,7 +25,9 @@ SkillsAndInterestsForm.propTypes = {
   handleInput: PropTypes.func,
   props: PropTypes.object,
   skills: PropTypes.string,
-  interests: PropTypes.string
+  interests: PropTypes.string,
+  handleFormActive: PropTypes.func,
+  formActiveNumber: PropTypes.number
 }
 
 export default SkillsAndInterestsForm;
