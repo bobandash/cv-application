@@ -41,7 +41,7 @@ EducationForm.propTypes = {
   graduationDate: PropTypes.string,
   location: PropTypes.string,
   studentOrganizations: PropTypes.string,
-  gpa: PropTypes.string
+  gpa: PropTypes.string,
   handleFormActive: PropTypes.func,
   formActiveNumber: PropTypes.number,
 }
