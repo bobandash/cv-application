@@ -26,4 +26,14 @@ const generalInfoData = {
   cityAndState: "Los Angeles, CA"
 }
 
-export {workExperienceData, generalInfoData}
+const educationData = {
+  universityName: 'USC',
+  degree: 'Political Science',
+  graduationDate: "October 2022",
+  honorsAwards: 'Random Award',
+  studentOrganizations: 'Basketball Club',
+  location: 'Los Angeles, CA',
+  gpa: '4.0/4.0'
+}
+
+export {workExperienceData, generalInfoData, educationData}
