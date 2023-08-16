@@ -8,6 +8,7 @@ const workExperienceData = [
     cityAndState: 'Seattle, Washington',
     bulletPoints: 'Led 1M people to handle logistics and innovate faster shipping methods to increase customer experience',
     id: uuid(),
+    isEditing: false,
   },
   {
     companyName: 'Apple',
@@ -16,6 +17,7 @@ const workExperienceData = [
     cityAndState: 'Seattle, Washington',
     bulletPoints: 'Led 1M people to handle logistics and innovate faster shipping methods to increase customer experience',
     id: uuid(),
+    isEditing: false,
   }
 ]
 
@@ -36,4 +38,9 @@ const educationData = {
   gpa: '4.0/4.0'
 }
 
-export {workExperienceData, generalInfoData, educationData}
+const skillsInterestsData = {
+  skills: 'ReactJS, VanillaJS, HTML/CSS',
+  interests: 'Youtube, Twitch, Drawing'
+}
+
+export {workExperienceData, generalInfoData, educationData, skillsInterestsData}
