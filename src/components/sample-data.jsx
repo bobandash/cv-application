@@ -9,6 +9,7 @@ const workExperienceData = [
     bulletPoints: 'Led 1M people to handle logistics and innovate faster shipping methods to increase customer experience',
     id: uuid(),
     isEditing: false,
+    isHidden: false
   },
   {
     companyName: 'Apple',
@@ -18,6 +19,7 @@ const workExperienceData = [
     bulletPoints: 'Led 1M people to handle logistics and innovate faster shipping methods to increase customer experience',
     id: uuid(),
     isEditing: false,
+    isHidden: false
   }
 ]
 

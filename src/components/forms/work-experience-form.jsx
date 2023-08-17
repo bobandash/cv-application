@@ -60,7 +60,8 @@ function EditJobForm({toggleJobFormStatus, handleInput, allWorkExperience, handl
 }
 
 
-function WorkExperienceForm({workExperience, handleInput, currentWorkExperience, handleSetWorkExperience, handleFormActive, formActiveNumber, handleJobDelete, handleJobEdit, handleFinishJobEdit, handleJobEditInput}){
+function WorkExperienceForm({workExperience, handleInput, currentWorkExperience, handleSetWorkExperience, 
+  handleFormActive, formActiveNumber, handleJobDelete, handleJobEdit, handleFinishJobEdit, handleJobEditInput, handleToggleHideJob}){
   const [isJobFormOpen, setIsJobFormOpen] = useState(false);
   const hasAtLeastOneJob = (workExperience.length > 0 ? true : false);
   const isEditingJob = workExperience.filter(job => job.isEditing === true).length > 0 ? true : false;
@@ -74,7 +75,7 @@ function WorkExperienceForm({workExperience, handleInput, currentWorkExperience,
       <button className = "dropdown-button" data-index = {FormNumber.WorkExperience} onClick = {handleFormActive}>Work Experience</button>
       {(formActiveNumber === FormNumber.WorkExperience) && 
         <div className = "form-container-excluding-header">
-          {(hasAtLeastOneJob && !isJobFormOpen) && <JobList jobs = {workExperience} handleJobDelete = {handleJobDelete} handleJobEdit = {handleJobEdit} toggleJobFormStatus = {toggleJobFormStatus}/>}
+          {(hasAtLeastOneJob && !isJobFormOpen) && <JobList jobs = {workExperience} handleJobDelete = {handleJobDelete} handleJobEdit = {handleJobEdit} handleToggleHideJob = {handleToggleHideJob} toggleJobFormStatus = {toggleJobFormStatus}/>}
           {!(isJobFormOpen) && <button className = "add-job" onClick = {toggleJobFormStatus}>Add Job</button>}
           {(isJobFormOpen && !isEditingJob) && <AddJobForm handleFinish = {handleSetWorkExperience} toggleJobFormStatus = {toggleJobFormStatus} handleInput = {handleInput} currentWorkExperience = {currentWorkExperience}/>}
           {isEditingJob && <EditJobForm handleFinish = {handleFinishJobEdit} toggleJobFormStatus = {toggleJobFormStatus} handleInput = {handleJobEditInput} allWorkExperience = {workExperience} />}
@@ -110,6 +111,7 @@ WorkExperienceForm.propTypes = {
   handleJobEdit: PropTypes.func,
   handleFinishJobEdit: PropTypes.func,
   handleJobEditInput: PropTypes.func,
+  handleToggleHideJob: PropTypes.func
 }
 
 export default WorkExperienceForm;

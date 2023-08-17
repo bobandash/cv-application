@@ -87,6 +87,15 @@ function App(){
     }))
   }
 
+  function handleToggleHideJob(key){
+    setWorkExperience(workExperience.map(job => {
+      if(key === job.id){
+        return {...job, isHidden: !job.isHidden};
+      }
+      return job;
+    }))    
+  }
+
   function handleJobEditInput(e){
     const value = e.target.value;
     const prop = e.target.name;
@@ -106,8 +115,8 @@ function App(){
       <GeneralInfoForm handleInput = {handleGeneralInfoInput} props = {generalInfo} handleFormActive = {handleFormActive} formActiveNumber = {formActiveNumber}/>
       <WorkExperienceForm workExperience = {workExperience} handleSetWorkExperience = {handleSetWorkExperience} handleInput = {handleWorkExperienceInput} 
         currentWorkExperience = {currentWorkExperience} handleFormActive = {handleFormActive} formActiveNumber = {formActiveNumber} 
-        handleJobDelete = {handleJobDelete} handleJobEdit = {handleJobEdit} handleFinishJobEdit = {handleFinishJobEdit} handleJobEditInput = {handleJobEditInput}/>
-      
+        handleJobDelete = {handleJobDelete} handleJobEdit = {handleJobEdit} handleFinishJobEdit = {handleFinishJobEdit} handleJobEditInput = {handleJobEditInput}
+        handleToggleHideJob = {handleToggleHideJob}/>
       <EducationForm props = {education} handleInput = {handleSetEducation} handleFormActive = {handleFormActive} formActiveNumber = {formActiveNumber}/>
       <SkillsAndInterestsForm props = {skillsInterests} handleInput = {handleSkillsAndInterests} handleFormActive = {handleFormActive} formActiveNumber = {formActiveNumber}/>
     </FormContainer>
@@ -116,7 +125,7 @@ function App(){
       <ResumeContentContainer>
           {hasWorkExperience && <SectionHeader text = "Work Experience" />}
           {workExperience.map(job => (
-            <WorkExperienceText key = {job.id} {...job} />
+            !job.isHidden && <WorkExperienceText key={job.id} {...job} />
           ))}
           <WorkExperienceText {... currentWorkExperience} />
           <EducationText {... education} />
