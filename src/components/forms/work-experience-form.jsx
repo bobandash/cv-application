@@ -76,7 +76,7 @@ function WorkExperienceForm({workExperience, handleInput, currentWorkExperience,
       {(formActiveNumber === FormNumber.WorkExperience) && 
         <div className = "form-container-excluding-header">
           {(hasAtLeastOneJob && !isJobFormOpen) && <JobList jobs = {workExperience} handleJobDelete = {handleJobDelete} handleJobEdit = {handleJobEdit} handleToggleHideJob = {handleToggleHideJob} toggleJobFormStatus = {toggleJobFormStatus}/>}
-          {!(isJobFormOpen) && <button className = "add-job" onClick = {toggleJobFormStatus}>Add Job</button>}
+          {!(isJobFormOpen) && <button className = "add-job" onClick = {toggleJobFormStatus}><i className="fa-solid fa-plus"></i></button>}
           {(isJobFormOpen && !isEditingJob) && <AddJobForm handleFinish = {handleSetWorkExperience} toggleJobFormStatus = {toggleJobFormStatus} handleInput = {handleInput} currentWorkExperience = {currentWorkExperience}/>}
           {isEditingJob && <EditJobForm handleFinish = {handleFinishJobEdit} toggleJobFormStatus = {toggleJobFormStatus} handleInput = {handleJobEditInput} allWorkExperience = {workExperience} />}
         </div>
