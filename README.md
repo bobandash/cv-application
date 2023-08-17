@@ -3,7 +3,7 @@
 This project is part of <a href = "https://www.theodinproject.com/lessons/node-path-react-new-cv-application" target = "_blank">The Odin Project Curriculum (TOP)</a>, which is the first instance in which students use React.js. The user inputs data for form components on the left side, and the right side renders the inputs using the virtual DOM to create a resume.
 
 <h2>Preview</h2>
-![image](https://github.com/bobandash/cv-application/assets/74850332/40faee61-5eba-4624-82a0-a210f4bd1c4f)
+![cvapplication](https://github.com/bobandash/cv-application/assets/74850332/17d25c00-17cf-4e17-92cc-6aa0184bede6)
 
 <h2>Reflection</h2>
 Below I am going to write some features that I would want to implement if I came back to the future, and some of the struggles I had regarding implementation / what I would need to improve on in the future.
