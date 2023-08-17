@@ -14,7 +14,8 @@ import EducationForm from './forms/education-form'
 import EducationText from './resume-text/education-text'
 import SkillsAndInterestsForm from './forms/skills-interests-form'
 import SkillsInterestsText from './resume-text/skills-interests-text'
-
+import {emptyWorkExperienceData, emptyGeneralInfoData, emptyEducationData, emptySkillsInterestsData, emptyCurrentWorkExperienceData} from './sample-empty-data'
+import FormButtons from './forms/form-buttons';
 
 function App(){
   const [generalInfo, setGeneralInfo] = useState(generalInfoData);
@@ -23,6 +24,7 @@ function App(){
   const [education, setEducation] = useState(educationData);
   const [skillsInterests, setSkillsInterests] = useState(skillsInterestsData);
   const [formActiveNumber, setFormActiveNumber] = useState(1);
+  const [isMobileResumeDisplayed, setIsMobileResumeDisplayed] = useState(false);
 
   function handleGeneralInfoInput(e){
     const value = e.target.value;
@@ -38,9 +40,12 @@ function App(){
 
   // when the finish button is clicked on, the work experience is added
   function handleSetWorkExperience(){
-    const newWorkExperience = {...currentWorkExperience, id: uuid()};
-    setWorkExperience([...workExperience, newWorkExperience]);
-    setCurrentWorkExperience({});
+    if(currentWorkExperience.companyName){
+      const newWorkExperience = {...currentWorkExperience, id: uuid()};
+      setWorkExperience([...workExperience, newWorkExperience]);
+      setCurrentWorkExperience({});
+    }
+
   }
 
   function handleSetEducation(e){
@@ -108,10 +113,30 @@ function App(){
     }))
   }
 
+  function handleClearData(){
+    setGeneralInfo(emptyGeneralInfoData);
+    setCurrentWorkExperience(emptyCurrentWorkExperienceData);
+    setWorkExperience(emptyWorkExperienceData);
+    setEducation(emptyEducationData);
+    setSkillsInterests(emptySkillsInterestsData);
+    setFormActiveNumber(0)  
+  }
+
+  function handleMobileDisplayResume(){
+    const resumeContainer = document.getElementById('resume-container');
+    const closeMobileResumeButton = document.querySelector('.remove-mobile-form');
+    const body = document.querySelector('body');
+    resumeContainer.classList.toggle('mobile-hidden');
+    body.classList.toggle('background-fade');
+    closeMobileResumeButton.classList.toggle('hidden');
+    setIsMobileResumeDisplayed(!isMobileResumeDisplayed);
+  }
+
   const hasWorkExperience = ((Object.keys(currentWorkExperience).length > 0 || workExperience.length > 0) ? true : false)
   return (
     <>
     <FormContainer>
+      <FormButtons handleClearData = {handleClearData} handleMobileDisplayResume = {handleMobileDisplayResume} />
       <GeneralInfoForm handleInput = {handleGeneralInfoInput} props = {generalInfo} handleFormActive = {handleFormActive} formActiveNumber = {formActiveNumber}/>
       <WorkExperienceForm workExperience = {workExperience} handleSetWorkExperience = {handleSetWorkExperience} handleInput = {handleWorkExperienceInput} 
         currentWorkExperience = {currentWorkExperience} handleFormActive = {handleFormActive} formActiveNumber = {formActiveNumber} 
@@ -132,6 +157,7 @@ function App(){
           <SkillsInterestsText {... skillsInterests} />
       </ResumeContentContainer>
     </ResumeContainer>
+    
     </>
   )
 }

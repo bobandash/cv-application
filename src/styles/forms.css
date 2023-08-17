@@ -68,7 +68,7 @@ h1 {
   box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 20px;
 }
 
-.add-job, .finish-adding-job {
+.add-job, .finish-adding-job, .finish-editing-job {
   background-color: #3CC2DF;
   font-size: 24px;
   padding: 10px 20px;
@@ -99,24 +99,99 @@ button[type="submit"]{
   flex-direction: column;
 }
 
-.jobs-list button {
-  background-color: white;
-  margin-left: 10px;
-  margin-right: 10px;
-  font-size: 24px;
-  padding: 10px 0px;
-  border-top: none;
-  border-right: none;
-  border-left: none;
+.collapsed-job {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid black;
   text-transform: uppercase;
+  padding: 15px 0px;
+}
+
+.collapsed-job h1 {
+  font-family: 'Saira Condensed', 'Times New Roman';
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+.collapsed-job > button:first-of-type {
+  margin-left: auto;
+}
+
+.collapsed-job > button:not(:last-of-type){
+  margin-right: 10px;
+}
+
+.collapsed-job button {
+  border: none;
+  background-color: white;
+  transform: scale(1.5);;
+}
+
+.collapsed-job button > * {
+  width: 100%;
 }
 
 .work-experience-form {
   margin-top: 20px
 }
 
+.form-general-buttons {
+  display: flex;
+}
+
+.form-general-buttons > button {
+  background-color: #3CC2DF;
+  font-size: 24px;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 20px;
+  width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 10px;
+  justify-content: space-around;
+}
+
+.display-resume {
+  margin-left: 20px;
+}
+
+.background-fade {
+  overflow: hidden;
+  background-color: lightgray;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.remove-mobile-form {
+  position: absolute;
+  aspect-ratio: 1 / 1;
+  right: 3%;
+  top: 3%;
+  border-radius: 50%;
+  padding: 15px;
+  color: red;
+  background-color: white;
+  z-index: 1001;
+  border: 3px solid red;
+  display: flex;
+  align-items: center;
+}
+
+.remove-mobile-form i {
+  transform: scale(2);
+}
+
+.form-container:nth-of-type(n + 1){
+  margin-top: 40px;
+}
+
 @media screen and (min-width: 1200px) {
   .dropdown-button {
     font-size: 36px;
+  }
+
+  .display-resume {
+    display: none;
   }
 }
