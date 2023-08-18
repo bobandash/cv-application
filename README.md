@@ -22,7 +22,7 @@ Areas of Struggle / What I need to research and improve on for the next project:
 <ul>
   <li>Github commits - I feel like my github commits are still messy because I'm trying to work on multiple features at once. When I finish a feature, I should commit that feature and move on to other things that need fixing.</li>
   <li>Deciding what needs to be a react component - I didn't have a clear idea of what components I had to make before I started coding (e.g. Work Experience and Education roughly should have the same styling)</li>
-  <li>File organization - How I organized the files are okay for small projects, btu it would definitely be confusing the more files I add. I need to watch a video on this.</li>
+  <li>File organization - How I organized the files are okay for small projects, but it would definitely be confusing the more files I add. I need to watch a video on this.</li>
   <li>Passing parameters in React - because of how I structured the files, I passed too many parameters to the work experience form. I could refactor it by putting the buttons inside the work experience form as children in the app.jsx file, but I need to watch/read more resources on this to prevent my code from being messy in the future.</li>
 </ul>
 
